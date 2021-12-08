@@ -1,0 +1,131 @@
+
+
+<html ng-app="productEditApp" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="In The Bag">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Charles Christian">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dropzone.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+   
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript" src="multiselect/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="multiselect/bootstrp-multiselect.css" type="text/css"/> 
+
+    <base href="/reporteditform.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="js/productsEditManager.js"></script>
+
+
+
+    <title>Products | In The Bag </title>
+</head>
+<body ng-controller="ProductEditController as ctrl" data-ng-init="materialLink(product.mats,matList)">
+    <script src="js/scripts.js"></script>
+    <div class="container">
+    <div class="col-sm-5">
+        <a href="https://inthebag.z6.web.core.windows.net/"><img id="SiteLogo" src="images/C5.jpg"></a>
+    </div>
+    </div>
+    <div >
+        <div ng-init="Init()">
+          <div   class = "grid">
+              <form>
+                  <div class="form-group">
+                    <label >Product Name</label>
+                    <input class="form-control" placeholder="Enter Product" id="productName" value="{{product.productName}}">
+                    
+                  </div>
+                  <div class="form-group ">
+                    <label>Materials</label>
+                    <div><label style="padding:10px;" ng-repeat="material in materials"><input class='materials' name='materials[]' type='checkbox' ng-attr-id="{{material.material}}" value="{{material.material}}">{{material.material}} &#9;</label></div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Barcode</label>
+                    <input class="form-control"  id="barcode" placeholder="Enter Barcode" value="{{product.barcode}}">
+                  </div>
+                  
+                  <div>
+                    <img ng-src="https://inthebag.blob.core.windows.net/app-images/products/{{product.productPhotoId.toLowerCase()}}" id="blah" src="#" class = "imageGridStyle">
+                  </div>
+                  <form class="dropzone">
+                      <!-- <input type="file" class="form-control-file" id="fileupload1" onchange="readURL(this)" ng-Click ="setFile()"ngf-max-size="2MB" ngf-select> -->
+                  </form>
+                  
+
+                  <div class="checkbox">
+                    <label><input type="checkbox" id="flagged" ng-checked="isflagged" value='true'>Flagged</label>
+                  </div>
+                  <script>
+                    var checkboxes = document.getElementsByName('materials[]');
+                    var vals = '';
+                    for (var i=0,n=checkboxes.length;i<n;i++)
+                    {
+                      if(checkboxes[i].checked)
+                      {
+                        vals += ","+checkboxes[i].value;
+                      }
+                    }
+                    if (vals) vals = vals.substring(1);
+                    
+                  </script>      
+                  <button type="submit" class="btn btn-primary" styles= "padding: 10px;" ng-click="editProduct()">Submit</button>
+                  {{materialLink(product.mats,matList)}}
+                </form>
+          </div>
+        </div>
+      </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>  
+<script src="js/dropzone.js"></script>
+
+<script type="text/javascript">
+  $( document ).ready(function() {
+    Dropzone.autoDiscover = false;
+  
+    var config = {
+        paramName: "file", // The name that will be used to transfer the file
+        maxFilesize: 200, // MB
+        maxFiles: 1,
+        uploadMultiple: false
+    };
+
+    if (document.getElementsByClassName('dropzone').length) {
+      var uplaodDropzone = new Dropzone($(".dropzone").get(0), config);
+      uplaodDropzone.uploadFiles = function (files) {
+          var self = this;
+
+          var file = files[0];
+
+          $scope.documentUpload = file;
+
+          file.status = Dropzone.SUCCESS;
+          self.emit("success", file, 'success', null);
+          self.emit("complete", file);
+          self.processQueue();
+      };
+    }
+  });
+</script>
+</body>
+
+</html>

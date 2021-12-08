@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                xmlns:imgcrop="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.ImageCropView"
+                Title="{Binding Title}"
+                BackgroundColor="{DynamicResource BackgroundColor}"
+                xmlns:views="clr-namespace:CPMA_Core_APP.PartialViews"
+                prism:ViewModelLocator.AutowireViewModel="True"
+                x:Class="CPMA_Core_APP.Views.SolveFormPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding SubmitCommand}"
+            Text="Submit"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                MinimumWidthRequest="10000"
+                WidthRequest="10000">
+                <!-- Name -->
+                <Frame
+                    Padding="4"
+                    HasShadow="False"
+                    BackgroundColor="{DynamicResource HeadingColor}">
+                    <Label
+                        Text="{Binding Name}"
+                        FontSize="Subtitle"
+                        LineBreakMode="NoWrap"
+                        Margin="16,6"
+                        HorizontalTextAlignment="Start"
+                        TextColor="{DynamicResource HeadingFontColor}"/>
+                </Frame>
+
+                <StackLayout
+                    Margin="16, 30"
+                    Padding="0"
+                    Spacing="30"
+                    HorizontalOptions="CenterAndExpand">
+                    <!-- Image  -->
+                    <Frame
+                        Margin="15"
+                        Padding="0"
+                        HorizontalOptions="CenterAndExpand"
+                        CornerRadius="5"
+                        IsClippedToBounds="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CameraButtonCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <imgcrop:ImageCropView 
+                            HeightRequest="250"
+                            WidthRequest="250"
+                            Source="{Binding Image}"
+                            IsEnabled="False"/>
+                    </Frame>
+                </StackLayout>
+
+
+                <!-- Materials -->
+                <Frame
+                    Padding="4"
+                    HasShadow="False"
+                    BackgroundColor="{DynamicResource HeadingColor}">
+                    <Label
+                        Text="MATERIALS"
+                        FontSize="Subtitle"
+                        LineBreakMode="NoWrap"
+                        Margin="16,6"
+                        HorizontalTextAlignment="Start"
+                        TextColor="{DynamicResource HeadingFontColor}"/>
+                </Frame>
+                <!-- Material button -->
+                <Frame
+                        BackgroundColor="Transparent"
+                        Margin="0"
+                        Padding="16,8"
+                        MinimumWidthRequest="10000"
+                        WidthRequest="10000"
+                        HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding MaterialsButtonCommand}"
+                            CommandParameter="{Binding .}"/>
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal">
+                        <!--Text and expand icon-->
+                        <Label
+                            Text="Choose Materials"
+                            FontFamily="{DynamicResource p1}"
+                            FontSize="{DynamicResource FontSize1}"
+                            Grid.Column="1"
+                            VerticalOptions="Center"
+                            HorizontalTextAlignment="Start"/>
+                        <ffimage:CachedImage
+                            Source="{DynamicResource ExpandIconSource}"
+                            HorizontalOptions="EndAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            HeightRequest="20"
+                            WidthRequest="20"/>
+                    </StackLayout>
+                </Frame>
+                <!--Materials-->
+                <views:BindableStackLayout
+                    ItemsSource="{Binding Model.Materials}"
+                    Spacing="0">
+                    <views:BindableStackLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                BackgroundColor="Transparent"
+                                Margin="0"
+                                Padding="16,8"
+                                MinimumWidthRequest="10000"
+                                WidthRequest="10000"
+                                HasShadow="False">
+                                <StackLayout Orientation="Horizontal">
+                                    <!--Search Result Name and Info-->
+                                    <Label
+                                            Text="{Binding Name}"
+                                            FontFamily="{DynamicResource p1}"
+                                            FontSize="{DynamicResource FontSize1}"
+                                            Grid.Column="1"
+                                            VerticalOptions="Center"
+                                            HorizontalTextAlignment="Start"
+                                            TextColor="Black"/>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </views:BindableStackLayout.ItemTemplate>
+                </views:BindableStackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

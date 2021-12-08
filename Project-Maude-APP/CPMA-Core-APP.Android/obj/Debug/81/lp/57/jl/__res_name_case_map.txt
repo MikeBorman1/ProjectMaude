@@ -1,0 +1,5 @@
+drawable-hdpi/fct_ic_clear_icon.png;drawable-hdpi/fct_ic_clear_icon.png
+drawable-mdpi/fct_ic_clear_icon.png;drawable-mdpi/fct_ic_clear_icon.png
+drawable-xhdpi/fct_ic_clear_icon.png;drawable-xhdpi/fct_ic_clear_icon.png
+drawable-xxhdpi/fct_ic_clear_icon.png;drawable-xxhdpi/fct_ic_clear_icon.png
+drawable-xxxhdpi/fct_ic_clear_icon.png;drawable-xxxhdpi/fct_ic_clear_icon.png

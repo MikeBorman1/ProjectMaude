@@ -1,0 +1,14 @@
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.Model\bin\Debug\netstandard2.0\CPMA-Core-APP.Model.deps.json
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.Model\bin\Debug\netstandard2.0\CPMA-Core-APP.Model.dll
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.Model\bin\Debug\netstandard2.0\CPMA-Core-APP.Model.pdb
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.Model\bin\Debug\netstandard2.0\CPMA-Core-APP.Common.dll
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.Model\bin\Debug\netstandard2.0\CPMA-Core-APP.Common.pdb
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.Model\obj\Debug\netstandard2.0\CPMA-Core-APP.Model.csprojAssemblyReference.cache
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.Model\obj\Debug\netstandard2.0\CPMA-Core-APP.Model.csproj.CoreCompileInputs.cache
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.Model\obj\Debug\netstandard2.0\CPMA-Core-APP.Model.AssemblyInfoInputs.cache
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.Model\obj\Debug\netstandard2.0\CPMA-Core-APP.Model.AssemblyInfo.cs
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.Model\obj\Debug\netstandard2.0\CPMA-Core-APP.Model.csproj.Fody.CopyLocal.cache
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.Model\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.Model\obj\Debug\netstandard2.0\CPMA-Core-APP.Model.csproj.CopyComplete
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.Model\obj\Debug\netstandard2.0\CPMA-Core-APP.Model.dll
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.Model\obj\Debug\netstandard2.0\CPMA-Core-APP.Model.pdb

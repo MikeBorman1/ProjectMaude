@@ -1,0 +1,17 @@
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\bin\Debug\netstandard2.0\CPMA-Core-APP.API.deps.json
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\bin\Debug\netstandard2.0\CPMA-Core-APP.API.dll
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\bin\Debug\netstandard2.0\CPMA-Core-APP.API.pdb
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\bin\Debug\netstandard2.0\CPMA-Core-APP.Common.dll
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\bin\Debug\netstandard2.0\CPMA-Core-APP.Model.dll
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\bin\Debug\netstandard2.0\CPMA-Core-APP.Utils.dll
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\bin\Debug\netstandard2.0\CPMA-Core-APP.Model.pdb
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\bin\Debug\netstandard2.0\CPMA-Core-APP.Utils.pdb
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\bin\Debug\netstandard2.0\CPMA-Core-APP.Common.pdb
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\obj\Debug\netstandard2.0\CPMA-Core-APP.API.csprojAssemblyReference.cache
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\obj\Debug\netstandard2.0\CPMA-Core-APP.API.csproj.CoreCompileInputs.cache
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\obj\Debug\netstandard2.0\CPMA-Core-APP.API.AssemblyInfoInputs.cache
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\obj\Debug\netstandard2.0\CPMA-Core-APP.API.AssemblyInfo.cs
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\obj\Debug\netstandard2.0\CPMA-Core-APP.API.csproj.CopyComplete
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\obj\Debug\netstandard2.0\CPMA-Core-APP.API.dll
+C:\Users\Mike\Documents\Project-Maude-APP\CPMA-Core-APP.API\obj\Debug\netstandard2.0\CPMA-Core-APP.API.pdb

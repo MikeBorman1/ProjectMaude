@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:views="clr-namespace:CPMA_Core_APP.PartialViews"
+             x:Class="CPMA_Core_APP.Views.RecycleInfoPage"
+             BackgroundColor="{DynamicResource BackgroundColor}">
+    <ScrollView Margin=" 0">
+        <views:BindableStackLayout
+            x:Name="RecycleVM"
+            ItemsSource="{Binding Model}"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="Start"
+            Padding="0"
+            Spacing="0">
+            <ActivityIndicator
+                IsVisible="{Binding IsLoading}"
+                IsRunning="{Binding IsLoading}"
+                Color="{DynamicResource ButtonPrimaryColor}" />
+
+            <views:BindableStackLayout.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout
+                        Spacing="0"
+                        MinimumWidthRequest="10000"
+                        WidthRequest="10000">
+                        <!--Bag Name-->
+                        <Frame
+                            Padding="4"
+                            BackgroundColor="{DynamicResource HeadingColor}">
+                            <Label
+                                Text="{Binding BagText}"
+                                FontSize="Subtitle"
+                                LineBreakMode="NoWrap"
+                                Margin="16,6"
+                                HorizontalTextAlignment="Start"
+                                TextColor="{DynamicResource HeadingFontColor}"/>
+                        </Frame>
+                        <!--Item info-->
+                        <Frame
+                            Padding="0.2"
+                            BackgroundColor="{DynamicResource BackgroundWarningGreen}"
+                            >
+                            <views:RecycleInfoList
+                                Padding="16, 8"
+                                BindingContext="{Binding AcceptedItems}"
+                                HorizontalOptions="Start"/>
+                        </Frame>
+                        <Frame
+                            Padding="0.2"
+                            BackgroundColor="{DynamicResource BackgroundWarningRed}"
+                            >
+                            <views:RecycleInfoList
+                                Padding="16,8"
+                                BindingContext="{Binding RejectedItems}"
+                                HorizontalOptions="Start"/>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </views:BindableStackLayout.ItemTemplate>
+        </views:BindableStackLayout>
+    </ScrollView>
+    
+    
+</ContentPage>

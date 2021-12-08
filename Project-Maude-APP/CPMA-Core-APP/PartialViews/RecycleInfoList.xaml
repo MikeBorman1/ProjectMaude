@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CPMA_Core_APP.PartialViews.RecycleInfoList"
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:views="clr-namespace:CPMA_Core_APP.PartialViews"
+             x:Name="Self">
+    <ContentView.Content>
+        <views:BindableStackLayout
+            x:Name="RecycleInfo"
+            ItemsSource="{Binding .}"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="Start" >
+            <views:BindableStackLayout.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Label
+                            Text="{Binding .}"
+                            LineBreakMode="NoWrap"
+                            HorizontalTextAlignment="Start"
+                            VerticalTextAlignment="Center"
+                            VerticalOptions="Fill"
+                            TextColor="{DynamicResource TextColor}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </views:BindableStackLayout.ItemTemplate>
+        </views:BindableStackLayout>
+    </ContentView.Content>
+</ContentView>

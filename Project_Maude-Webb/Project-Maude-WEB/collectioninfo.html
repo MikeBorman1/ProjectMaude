@@ -1,0 +1,97 @@
+<!doctype html>
+
+<html ng-app="collectionInfoApp" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="In The Bag">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Charles Christian">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="js/collectionInfoManager.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <title>In The Bag</title>
+</head>
+
+<body>
+  <script src="js/scripts.js"></script>
+  <div class="container">
+    <div class="col-sm-5">
+      <a href="https://inthebag.z6.web.core.windows.net/"><img id="SiteLogo" src="images/C5.jpg"></a>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="index.html">Products </a>
+      <a class="nav-item nav-link" href="reports.html">Reports</a>
+      <a class="nav-item nav-link" href="materials.html">Materials</a>
+      <a class="nav-item nav-link" href="searchfreq.html">Search Terms </a>
+      <a class="nav-item nav-link " href="warnings.html">Warnings </a>
+      <a class="nav-item nav-link active" href="collectioninfo.html">Collection Info <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="recycleInfo.html">Recycle Info</a>
+      <a class="nav-item nav-link" href="recycleBin.html">Recycle Bin</a>
+      
+    </div>
+  </div>
+</nav>
+<div class = "grid searchbar">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" id="search" onkeyup="myFunction()" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form> 
+  <form class="form-inline" style="float: right" >
+      <a style="padding:10px;" class="btn btn-primary" href="collectioninfoeditform.html" >&#43;Add Location</a>
+     </form>
+</div>
+
+<div ng-controller="collectionInfoController as ctrl" class="grid">
+  <table id="table" class="table table-hover table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Location</th>
+        <th scope="col">Laitude</th>
+        <th scope="col">Longitude</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="location in locations" >
+        
+        <td>{{location.locationName}}</td>
+        <td>{{location.latitude}}</td>
+        <td>{{location.longitude}}</td>
+        <td><a class="btn btn-primary" href="collectioninfoeditform.html?collectionId={{location.Id}}">Edit</a></td>
+        <td><a class="btn btn-primary" ng-click="delete(location.Id)" >Delete</a></td>
+    </tbody>
+  </table>
+ 
+</div>
+
+
+</div>  
+<script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

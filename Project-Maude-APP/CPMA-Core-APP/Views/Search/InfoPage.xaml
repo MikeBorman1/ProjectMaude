@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:imgcrop="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.ImageCropView"
+             xmlns:views="clr-namespace:CPMA_Core_APP.PartialViews"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CPMA_Core_APP.Views.InfoPage"
+             Title="{Binding Title}"
+             BackgroundColor="{DynamicResource BackgroundColor}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            IsEnabled="{Binding NotFlagged}"
+            Text="{Binding FlagText}"
+            Command="{Binding FlagCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView >
+            <StackLayout
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Start"
+                Spacing="0"
+                Margin="0, 20"
+                MinimumWidthRequest="10000" 
+                WidthRequest="10000"
+                Padding="0">
+
+                <!--Image and Icons-->
+                <Grid
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="StartAndExpand"
+                    HeightRequest="250"
+                    WidthRequest="250">
+
+                    <!--Image-->
+                    <Frame
+                        Margin="15"
+                        Padding="0"
+                        HorizontalOptions="CenterAndExpand"
+                        IsClippedToBounds="True"
+                        CornerRadius="5">
+                        <imgcrop:ImageCropView
+                            HeightRequest="250"
+                            WidthRequest="250"
+                            HorizontalOptions="CenterAndExpand"
+                            Source="{Binding ProductImage}"/>
+                    </Frame>
+                    <!--Verification Tick-->
+                    <Frame
+                        IsVisible="{Binding IsVerified}"
+                        Margin="0"
+                        Padding="0"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="Start"
+                        BackgroundColor="Transparent">
+                        <ffimage:CachedImage
+                            Source="{DynamicResource VerifiedIconSource}"/>
+                    </Frame>
+                    <!--Flagged-->
+                    <Frame
+                        IsVisible="{Binding Flagged}"
+                        Margin="0"
+                        Padding="0"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        HorizontalOptions="EndAndExpand"
+                        VerticalOptions="Start"
+                        BackgroundColor="Transparent">
+                        <ffimage:CachedImage
+                            Source="{DynamicResource FlaggedIconSource}"/>
+                    </Frame>
+
+                </Grid>
+
+                <Frame
+                    Padding="10"
+                    BackgroundColor="{DynamicResource HeadingColor}">
+                    <Label 
+                        Text="MATERIALS:"
+                        FontSize="{DynamicResource FontSize1}"
+                        FontFamily="{DynamicResource p1}"
+                        TextColor="{DynamicResource HeadingFontColor}"/>
+                </Frame>
+                <!--Materials-->
+                <StackLayout
+                    Spacing="0">
+                    <!--Start Border-->
+                    <BoxView
+                        Color="LightGray"
+                        HeightRequest="1"/>
+
+                    <views:BindableStackLayout 
+                        ItemsSource="{Binding Materials}"
+                        VerticalOptions="Start"
+                        Spacing="0">
+                        <views:BindableStackLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame 
+                                    Padding="0" 
+                                    Margin="0"
+                                    HasShadow="False">
+                                    <StackLayout 
+                                        Spacing="0" 
+                                        Margin="0">
+                                        <Frame 
+                                            Padding="5"
+                                            HasShadow="False">
+                                            <Grid
+                                                Padding="16, 0"
+                                                Margin="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Frame
+                                                    Grid.Column="0"
+                                                    Margin="0"
+                                                    Padding="0"
+                                                    BackgroundColor="White"
+                                                    CornerRadius="0"
+                                                    HasShadow="False">
+                                                    <!--Change to cropped image when binding is working-->
+                                                    <imgcrop:ImageCropView
+                                                        Margin="1"
+                                                        Padding="0, 0, 5, 0"
+                                                        HeightRequest="50"
+                                                        WidthRequest="50"
+                                                        Source="{Binding MaterialImage}"/>
+                                                </Frame>
+
+                                                <!--Name and Bag-->
+                                                <StackLayout 
+                                                    Grid.Column="1"
+                                                    Margin="0"
+                                                    Spacing="2">
+                                                    <!--Material Name-->
+                                                    <Label 
+                                                        HorizontalOptions="Start"
+                                                        HorizontalTextAlignment="Start"
+                                                        VerticalOptions="End"
+                                                        TextColor="Black"
+                                                        Text="{Binding MaterialName}"
+                                                        FontFamily="{DynamicResource p1}"
+                                                        FontSize="{DynamicResource FontSize1}"/>
+                                                    <!--Material Location-->
+                                                    <Label 
+                                                        HorizontalOptions="Start"
+                                                        HorizontalTextAlignment="Start"
+                                                        VerticalOptions="Start"
+                                                        Text="{Binding Location}"
+                                                        FontSize="14"
+                                                        TextColor="{DynamicResource ButtonPrimaryColor}"/>
+                                                </StackLayout>
+
+                                                <!--Location Button-->
+                                                <Frame
+                                                    Grid.Column="2"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    Padding="1"
+                                                    HasShadow="False"
+                                                    BackgroundColor="Transparent"
+                                                    IsVisible="{Binding MapButtonVisible}"
+                                                    IsEnabled="{Binding MapButtonVisible}"
+                                                    WidthRequest="50">
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer
+                                                            Command="{Binding Parent.MapButtonCommand}" 
+                                                            CommandParameter="{Binding .}"/>
+                                                    </Frame.GestureRecognizers>
+                                                    <ffimage:CachedImage
+                                                        Margin="1"
+                                                        HeightRequest="30"
+                                                        WidthRequest="30"
+                                                        Source="{DynamicResource MapIconSource}"/>
+                                                </Frame>
+                                            </Grid>
+                                        </Frame>
+
+                                        <!--Seperator-->
+                                        <BoxView
+                                            Color="LightGray"
+                                            HeightRequest="1"/>
+
+                                        <!--Warnings-->
+                                        <views:BindableStackLayout 
+                                            ItemsSource="{Binding Warnings}"
+                                            Spacing="0"
+                                            Padding="16, 0">
+                                            <views:BindableStackLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Frame
+                                                        Padding="5"
+                                                        CornerRadius="0"
+                                                        HasShadow="False">
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Text="!" HorizontalTextAlignment="Center" FontSize="13"/>
+                                                            <Label Text="{Binding .}" HorizontalTextAlignment="Start" TextColor="Black" FontSize="13"/>
+                                                        </StackLayout>
+                                                    </Frame>
+                                                </DataTemplate>
+                                            </views:BindableStackLayout.ItemTemplate>
+                                        </views:BindableStackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </views:BindableStackLayout.ItemTemplate>
+                    </views:BindableStackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

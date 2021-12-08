@@ -1,0 +1,130 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>CPMA_Core_APP</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\Barcode.png" />
+    <None Remove="Resources\Icons\Blank.png" />
+    <None Remove="Resources\Icons\Camera.png" />
+    <None Remove="Resources\Icons\Cross.png" />
+    <None Remove="Resources\Icons\Downvote.png" />
+    <None Remove="Resources\Icons\Expand.png" />
+    <None Remove="Resources\Icons\FlaggedIcon.png" />
+    <None Remove="Resources\Icons\MagnifyingGlass.png" />
+    <None Remove="Resources\Icons\MapIcon.png" />
+    <None Remove="Resources\Icons\Upvote.png" />
+    <None Remove="Resources\Icons\VerifiedIcon.png" />
+    <None Remove="Resources\Icons\WhiteCamera.png" />
+    <None Remove="Resources\Icons\Checkmark.png" />
+    <None Remove="Resources\Icons\infobutton.png" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\Barcode.png" />
+    <EmbeddedResource Include="Resources\Icons\Blank.png" />
+    <EmbeddedResource Include="Resources\Icons\Camera.png" />
+    <EmbeddedResource Include="Resources\Icons\Cross.png" />
+    <EmbeddedResource Include="Resources\Icons\Downvote.png" />
+    <EmbeddedResource Include="Resources\Icons\Expand.png" />
+    <EmbeddedResource Include="Resources\Icons\FlaggedIcon.png" />
+    <EmbeddedResource Include="Resources\Icons\MagnifyingGlass.png" />
+    <EmbeddedResource Include="Resources\Icons\MapIcon.png" />
+    <EmbeddedResource Include="Resources\Icons\Upvote.png" />
+    <EmbeddedResource Include="Resources\Icons\VerifiedIcon.png" />
+    <EmbeddedResource Include="Resources\Icons\WhiteCamera.png" />
+    <EmbeddedResource Include="Resources\Icons\Checkmark.png" />
+    <EmbeddedResource Include="Resources\Icons\infobutton.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DLToolkit.Forms.Controls.ImageCropView" Version="1.0.7" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.618606" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="7.1.0.431" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="2.1.1" />
+    <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.0.1" />
+    <PackageReference Include="SkiaSharp" Version="1.68.0" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms.MultiSelectListView" Version="2.1.0" />
+    <PackageReference Include="Xamarin.Toolkit.Effects" Version="1.0.0" />
+    <PackageReference Include="ZXing.Net" Version="0.16.4" />
+    <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
+    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CPMA-Core-APP.Utils\CPMA-Core-APP.Utils.csproj" />
+    <ProjectReference Include="..\CPMA-Core-APP.ViewModels\CPMA-Core-APP.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Themes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="PartialViews\RecycleInfoList.xaml.cs">
+      <DependentUpon>RecycleInfoList.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Reports\MaterialsPage.xaml.cs">
+      <DependentUpon>MaterialsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Home\RecycleInfoPage.xaml.cs">
+      <DependentUpon>RecycleInfoPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\Authentication\LoadingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Authentication\LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Home\CreditsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Home\ExpandedReportsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Reports\ReportsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Search\InfoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Home\ScannerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Search\SearchResultsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Reports\ReportsFormPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Home\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Reports\SolveFormPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Home\ProductGroupSearchResultsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TestPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,68 @@
+
+
+<html ng-app="materialEditApp" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="In The Bag">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Charles Christian">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+   
+    <base href="/materialeditform.html">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="js/materialEditManager.js"></script>
+
+<title>Reports | In The Bag </title>
+</head>
+<body>
+    <script src="js/scripts.js"></script>
+    <div class="container">
+    <div class="col-sm-5">
+        <a href="https://inthebag.z6.web.core.windows.net/"><img id="SiteLogo" src="images/C5.jpg"></a>
+    </div>
+    </div>
+    <div ng-controller="MaterialEditController as ctrl">
+      <div ng-init="Init()">
+        <div class = "grid">
+            <form>
+                <div class="form-group">
+                  <label >Material Name</label>
+                  <input class="form-control" id="materialName" placeholder="Enter Material Name" value="{{material.material}}">
+                  
+                </div>
+                <div class="form-group">
+                  <label>Bin/Location</label>
+                  <div><label style="padding:10px;" ng-repeat="recycleBin in recycleBins"><input class='bin-location' name='recycleBin' type='radio' ng-attr-id="{{recycleBin.recycleBin}}" value="{{recycleBin.recycleCodeId}}">{{recycleBin.recycleBin}} &#9;</label></div>            
+                </div>
+
+                <div class="form-group ">
+                    <label>Warnings</label>
+                    <div><label style="padding:10px;" ng-repeat="warning in warnings"><input class='warnings' name='warnings[]' type='checkbox' ng-attr-id="{{warning.warning}}" value="{{warning.warningId}}">{{warning.warning}} &#9;</label></div>
+                  </div>
+
+                <div class="checkbox">
+                    <label><input type="checkbox" id="recyclable" ng-checked="isRecyclable" value='true'>Recyclable</label>
+                  </div>
+                <button type="submit" class="btn btn-primary"styles= "padding: 10px;" ng-click="editMaterial()">Submit</button>
+                {{recycleBinLink()}}
+              </form>
+        </div>
+      </div>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>          
+</body>
+
+</html>

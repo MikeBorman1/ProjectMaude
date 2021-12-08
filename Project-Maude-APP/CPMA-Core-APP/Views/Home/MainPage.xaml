@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CPMA_Core_APP.Views.MainPage"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls1="clr-namespace:CPMA_Core_APP.Controls"
+             Title="{Binding Title}"
+             BackgroundColor="{DynamicResource BackgroundColor}">
+<ContentPage.ToolbarItems>
+<ToolbarItem
+    Text="      "
+    Command="{Binding CreditsButtonCommand}">
+</ToolbarItem></ContentPage.ToolbarItems>
+    
+    <Grid HorizontalOptions="CenterAndExpand" Margin="0" Padding="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <!--Search Bar-->
+        <Frame
+            Grid.Row="0"
+            BorderColor="Transparent"
+            BackgroundColor="Transparent"
+            Margin="16"
+            Padding="0"
+            VerticalOptions="Start"
+            HorizontalOptions="CenterAndExpand">
+            <controls1:CustomSearchBar
+                VerticalOptions="Start"
+                HorizontalOptions="CenterAndExpand"
+                Text="{Binding InitialText}"
+                Placeholder="Search"
+                PlaceholderColor="DarkGray"
+                x:Name="SearchBar" 
+                SearchCommand="{Binding SearchBarCommand}"
+                SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"/>
+        </Frame>
+
+        <!--Scan Barcode Button-->
+        <Frame MinimumWidthRequest="160" MinimumHeightRequest="160" Margin="0" Padding="0"
+            WidthRequest="160" HeightRequest="160" 
+            CornerRadius="80" BackgroundColor="{DynamicResource ITBGreen}"
+            HorizontalOptions="Center" 
+            VerticalOptions="Center"
+            Grid.Row="1">
+
+            <Frame MinimumWidthRequest="160" MinimumHeightRequest="160" Margin="3" Padding="0"
+                WidthRequest="160" HeightRequest="160" 
+                CornerRadius="80" BackgroundColor="{DynamicResource ScanButtonColor}"
+                HorizontalOptions="Center" 
+                VerticalOptions="Center">
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ScanBarcodeButtonCommand}"/>
+                </Frame.GestureRecognizers>
+
+                <ffimage:CachedImage 
+                    Scale="0.7"
+                    Source="{DynamicResource BarcodeSource}"
+                    IsEnabled="False">
+                </ffimage:CachedImage>
+            </Frame>
+        </Frame>
+        
+        <!--Key-->
+        <Frame
+            Margin="0"
+            Padding="0"
+            Grid.Row="2">
+            <StackLayout>
+                <Frame
+                    Margin="0"
+                    BackgroundColor="{DynamicResource HeadingColor}"
+                    Padding="4">
+                    <Label
+                        Text="KEY"
+                        TextColor="{DynamicResource HeadingFontColor}"/>
+                </Frame>
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                <ffimage:CachedImage 
+                    Grid.Column="0"
+                    HeightRequest="30"
+                    WidthRequest="30"
+                    Source="{DynamicResource VerifiedIconSource}">
+                </ffimage:CachedImage>                    
+                   <Label
+                       Grid.Column="1"
+                        Text="This item has been verified by Guernsey Waste"
+                       TextColor="{DynamicResource HeadingFontColor}"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                <ffimage:CachedImage 
+                    Grid.Column="0"
+                    HeightRequest="30"
+                    WidthRequest="30"
+                    Source="{DynamicResource FlaggedIconSource}">
+                </ffimage:CachedImage>                    
+                   <Label
+                       Grid.Column="1"
+                       TextColor="{DynamicResource HeadingFontColor}"
+                Text="This item has been reported and will be checked by Guernsey Waste"
+                />
+                </Grid>
+            </StackLayout>
+        </Frame>
+    </Grid>
+
+</ContentPage>

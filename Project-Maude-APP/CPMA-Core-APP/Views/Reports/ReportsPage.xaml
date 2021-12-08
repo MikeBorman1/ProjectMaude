@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:imgcrop="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.ImageCropView"
+             xmlns:views="clr-namespace:CPMA_Core_APP.PartialViews"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CPMA_Core_APP.Views.ReportsPage"
+             BackgroundColor="{DynamicResource BackgroundColor}">
+    <ContentPage.Content >
+
+        <ScrollView
+            Margin="16, 16">
+            <views:BindableStackLayout
+                x:Name="ReportsQueue"
+                ItemsSource="{Binding ReportsQueue}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Start"  
+                Spacing="10">
+                <ActivityIndicator
+                    IsVisible="{Binding Parent.IsLoading}"
+                    IsRunning="{Binding Parent.IsLoading}"
+                    Color="{DynamicResource ButtonPrimaryColor}" />
+
+                <views:BindableStackLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <!--Start of Report-->
+                            <Frame
+                                BackgroundColor="Transparent"
+                                Margin="0"
+                                Padding="0"
+                                MinimumHeightRequest="60"
+                                HeightRequest="60"
+                                MinimumWidthRequest="10000"
+                                WidthRequest="10000"
+                                HasShadow="False">
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Command="{Binding Parent.ExpandReportButtonCommand}"
+                                        CommandParameter="{Binding Report}"/>
+                                </Frame.GestureRecognizers>
+
+                                <Grid ColumnSpacing="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <!--Report Image-->
+                                    <!--Search Result Image-->
+                                    <Frame
+                                        Grid.Column="0"
+                                        BackgroundColor="Transparent"
+                                        CornerRadius="100"
+                                        Padding="0">
+                                        <controls:CircleImage
+                                            Aspect="AspectFill"
+                                            Source="{Binding Image}"/>
+                                    </Frame>
+                                    <Grid
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Start">
+                                        <Frame
+                                            CornerRadius="100"
+                                            BackgroundColor="{DynamicResource ButtonPrimaryColor}"
+                                            HasShadow="False"
+                                            Padding="0">
+                                            <ffimage:CachedImage
+                                                HeightRequest="20"
+                                                WidthRequest="20"
+                                                Source="{DynamicResource BlankSource}"/>
+                                        </Frame>
+                                        <Label
+                                            Text="{Binding Rank}"
+                                            TextColor="White"
+                                            FontFamily="{DynamicResource p1}"
+                                            FontSize="12"
+                                            Margin="0"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            VerticalOptions="CenterAndExpand"
+                                            VerticalTextAlignment="Center"/>
+                                    </Grid>
+
+                                    <!--Rank-->
+
+                                    <!--Item Name-->
+                                    <Frame
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start"
+                                        BackgroundColor="Transparent"
+                                        BorderColor="Transparent"
+                                        CornerRadius="0">
+                                            <Label
+                                                Text="{Binding Report.ReportTitle}"
+                                                FontFamily="{DynamicResource p1}"
+                                                FontSize="{DynamicResource FontSize1}"
+                                                Grid.Column="1"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Start"
+                                                HorizontalTextAlignment="Start"/>
+                                    </Frame>
+
+                                    <!--Vote Button-->
+                                    <Frame
+                                        Grid.Column="2"
+                                        HorizontalOptions="End"
+                                        Margin="0"
+                                        Padding="0"
+                                        BorderColor="Transparent"
+                                        BackgroundColor="Transparent">
+
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Parent.VoteButtonCommand}" CommandParameter="{Binding .}"/>
+                                        </Frame.GestureRecognizers>
+
+                                        <ffimage:CachedImage 
+                                            Scale="0.5"
+                                            Source="{Binding VoteImage}"
+                                            IsEnabled="False">
+                                        </ffimage:CachedImage>
+                                    </Frame>
+
+                                    <!--Expand Button-->
+                                    <ffimage:CachedImage
+                                        Grid.Column="3"
+                                        Source="{DynamicResource ExpandIconSource}"
+                                        HorizontalOptions="EndAndExpand"
+                                        VerticalOptions="CenterAndExpand"
+                                        HeightRequest="20"
+                                        WidthRequest="20"/>
+                                </Grid>
+                            </Frame>
+                            <!--End of Report-->
+                            <BoxView
+                                BackgroundColor="LightGray"
+                                MinimumHeightRequest="1"
+                                HeightRequest="1"
+                                Margin="0"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </views:BindableStackLayout.ItemTemplate>
+            </views:BindableStackLayout>
+        </ScrollView>
+        
+    </ContentPage.Content>
+    
+</ContentPage>

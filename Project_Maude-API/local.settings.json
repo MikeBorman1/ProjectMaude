@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "DB_CON": "Server=tcp:inthebagdb.database.windows.net,1433;Initial Catalog=InTheBag;Persist Security Info=False;User ID=itbAdmin;Password=xJzU*r3Gvrr.9FgD_aC!YXpTU6VgkBwt;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+    "STORAGE_CON": "DefaultEndpointsProtocol=https;AccountName=inthebag;AccountKey=l/nLOL9Etb6T6JMxGxpC8W8zuUK+NGtQWnVcTLjy9m+PRqTLGvjA2+AW4C2tSYcxyNqQtlznt9nRyHlyCQBijQ==;EndpointSuffix=core.windows.net"
+  }
+}

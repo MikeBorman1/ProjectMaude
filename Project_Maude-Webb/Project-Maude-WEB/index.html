@@ -1,0 +1,115 @@
+<!doctype html>
+
+<html ng-app="productApp" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="In The Bag">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Charles Christian">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="js/productsManager.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <title>In The Bag</title>
+</head>
+
+<body>
+  <script src="js/scripts.js"></script>
+  <div class="container">
+    <div class="col-sm-5">
+      <a href="https://inthebag.z6.web.core.windows.net/"><img id="SiteLogo" src="images/C5.jpg"></a>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="index.html">Products <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="reports.html">Reports</a>
+      <a class="nav-item nav-link" href="materials.html">Materials</a>
+      <a class="nav-item nav-link" href="searchfreq.html">Search Terms</a>
+      <a class="nav-item nav-link" href="warnings.html">Warnings </a>
+      <a class="nav-item nav-link" href="collectioninfo.html">Collection Info </a>
+      <a class="nav-item nav-link" href="recycleInfo.html">Recycle Info</a>
+      <a class="nav-item nav-link" href="recycleBin.html">Recycle Bin</a>
+      
+    </div>
+  </div>
+</nav>
+<div class = " grid searchbar">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" id="search" onkeyup="myFunction()" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form> 
+    <form class="form-inline" style="float: right" >
+    <a style="padding:10px;" class="btn btn-primary" href="producteditform.html" >&#43;Add Product</a>
+    <div style="padding: 10px;">
+      <input class="form-check-input" type="checkbox" onclick="isVerified()" id = "Verify" >
+      <label class="form-check-label" for="defaultCheck1">
+        Filter Not Verified
+      </label>
+    </div>
+    <div style="padding: 10px;">
+      <input class="form-check-input" type="checkbox" onclick="isFlagged()" id = "Flagged" >
+      <label class="form-check-label" for="defaultCheck1">
+        Filter Flagged
+      </label>
+    </div>
+   </form> 
+  
+</div>
+
+<div ng-controller="ProductsController as ctrl" class="grid">
+  <table id="table" class="table table-hover table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Materials</th>
+        <th scope="col">Barcode</th>
+        <th scope="col">Image</th>
+        <th scope="col">Verified</th>
+        <th scope="col">Flagged</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr ng-class="rowClass(product)" ng-repeat="product in products" >
+        <td>{{product.productName}}</td>
+        <td>{{product.matString}}</td>
+        <td>{{product.barcode}}</td>
+        <td><img ng-src="https://inthebag.blob.core.windows.net/app-images/products/{{product.productPhotoId.toLowerCase()}}" class = "imageGridStyle"></td>
+        <td  value = "{{product.isVerified}}"><a id = "verify1"class="btn btn-primary" ng-click="verify(product.productId)" >Verify</a></td>
+        <td value = "{{product.flag}}">{{product.flag}}</td>
+        <td><a class="btn btn-primary" href="producteditform.html?productId={{product.productId}}">Edit</a></td>
+        <!-- data-toggle="modal" data-target="#exampleModal" -->
+        <td><a class="btn btn-primary" ng-click="delete(product.productId)" >Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
+ 
+</div>
+
+
+</div>  
+<script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

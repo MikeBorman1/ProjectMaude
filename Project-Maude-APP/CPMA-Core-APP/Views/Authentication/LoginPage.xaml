@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:staticColor="clr-namespace:CPMA_Core_APP.Common;assembly=CPMA-Core-APP.Common"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasNavigationBar="True"
+             x:Class="CPMA_Core_APP.Views.LoginPage"
+             Title="{Binding Title}">
+
+    <StackLayout>
+        
+        <StackLayout Padding="16">
+            <!--<label text="username or email" horizontaloptions="center" textcolor="{dynamicresource textcolor}"/>
+            <entry
+                placeholder="username"
+                keyboard="plain"
+                isenabled="{binding enabled}"
+                text="{binding username}"
+                textcolor="{dynamicresource loginregistertextcolor}"/>
+            <label text="password" horizontaloptions="center" textcolor="{dynamicresource textcolor}"/>
+            <entry
+                placeholder="password"
+                ispassword="true"
+                isenabled="{binding enabled}"
+                text="{binding password}"
+                textcolor="{dynamicresource loginregistertextcolor}"/>-->
+            <Button
+                Text="Login"
+                HorizontalOptions="CenterAndExpand"
+                WidthRequest="75"
+                BackgroundColor="{x:Static staticColor:Colors.C5BayLeaf}"
+                IsEnabled="{Binding Enabled}"
+                Command="{Binding LoginCommand}"
+                TextColor="{DynamicResource LoginRegisterButtonTextColor}"/>
+            <Label
+                HorizontalOptions="CenterAndExpand"
+                TextColor="Red"
+                Text="{Binding ErrorMessage}"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

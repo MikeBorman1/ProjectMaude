@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:imgcrop="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.ImageCropView"
+             xmlns:views="clr-namespace:CPMA_Core_APP.PartialViews"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CPMA_Core_APP.Views.MaterialsPage"
+             Title="{Binding Title}"
+             xmlns:lv="clr-namespace:Xamarin.Forms.MultiSelectListView;assembly=Xamarin.Forms.MultiSelectListView"
+             xmlns:controls="clr-namespace:CPMA_Core_APP.Controls"
+             BackgroundColor="{DynamicResource BackgroundColor}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+                Command="{Binding SubmitCommand}"
+                Text="Submit"/>
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content
+        xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+        
+        <StackLayout Margin="16">
+            <!--Search Bar-->
+            <controls:CustomSearchBar
+                Text="{Binding InitialText}"
+                Placeholder="Search Materials"
+                PlaceholderColor="DarkGray"
+                x:Name="SearchBar" 
+                SearchCommand="{Binding SearchBarCommand}"
+                SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}"/>
+
+            <ScrollView>
+                <ListView
+                        SeparatorVisibility="Default" 
+                        SeparatorColor="{DynamicResource ButtonPrimaryColor}"
+                        ItemsSource="{Binding Materials}"
+                        lv:MultiSelect.Enable="true">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <!--Activate if in list already-->
+                            <lv:SelectableCell x:Name="SelectableCell">
+                                <lv:SelectableCell.CheckView>
+                                    <ffimage:CachedImage Source="{DynamicResource CheckmarkSource}"/>
+ 
+                                </lv:SelectableCell.CheckView>
+                                <lv:SelectableCell.DataView>
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding Name}"/>
+                                    </StackLayout>
+                                </lv:SelectableCell.DataView>
+                            </lv:SelectableCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                    <ListView.Behaviors>
+                        <lv:SelectedItemBehavior Command="{Binding AddSelectedCommand}"/>
+                    </ListView.Behaviors>
+                </ListView>
+            </ScrollView>
+
+            <!--Line Break-->
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

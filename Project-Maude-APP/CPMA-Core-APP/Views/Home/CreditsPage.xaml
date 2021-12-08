@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:views="clr-namespace:CPMA_Core_APP.PartialViews"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CPMA_Core_APP.Views.Home.CreditsPage"
+             Title="{Binding Title}"
+             BackgroundColor="{DynamicResource BackgroundColor}">
+    <ContentPage.Content>
+        <StackLayout>
+            <views:BindableStackLayout
+                x:Name="CreditsVM"
+                ItemsSource="{Binding Credits}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Start"
+                Margin="0, 30"
+                Spacing="20">
+                <views:BindableStackLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Margin="0"
+                            Padding="2"
+                            HorizontalOptions="CenterAndExpand"
+                            MinimumWidthRequest="10000"
+                            WidthRequest="10000">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label 
+                                    HorizontalOptions="End"
+                                    Grid.Column="0"
+                                    Text="{Binding Name}"/>
+                                <Label 
+                                    Grid.Column="1"
+                                    Text="{Binding Position}"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </views:BindableStackLayout.ItemTemplate>
+            </views:BindableStackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

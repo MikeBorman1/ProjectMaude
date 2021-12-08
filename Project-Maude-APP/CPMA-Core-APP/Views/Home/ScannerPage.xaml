@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CPMA_Core_APP.Views.ScannerPage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <!--Zxing scanning components-->
+            <zxing:ZXingScannerView 
+                x:Name="scanView" 
+                IsScanning="{Binding IsScanning}" 
+                IsAnalyzing="{Binding IsAnalyzing}" 
+                Result="{Binding Result, Mode=TwoWay}" 
+                ScanResultCommand="{Binding OnBarcodeScannedCommand}"/>
+
+            <zxing:ZXingDefaultOverlay 
+                x:Name="scanOverlay"
+                TopText="Hold your phone up to the barcode" 
+                BottomText="Scanning will happen automatically" 
+                ShowFlashButton="false" 
+                Opacity="0.9"/>
+        </Grid>
+
+    </ContentPage.Content>
+    <!--Toolbar button to toggle on flash light-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Flash" Clicked="Handle_FlashButtonClicked"/>
+    </ContentPage.ToolbarItems>
+    
+</ContentPage>

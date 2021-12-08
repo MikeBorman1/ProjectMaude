@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:imgcrop="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.ImageCropView"
+             Title="{Binding Title}"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CPMA_Core_APP.Views.ReportsFormPage"
+             BackgroundColor="{DynamicResource BackgroundColor}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Command="{Binding SubmitCommand}"
+            Text="Submit"/>
+        
+    </ContentPage.ToolbarItems>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                Padding="0"
+                Spacing="8"
+                HorizontalOptions="CenterAndExpand">
+                <ActivityIndicator
+                    IsVisible="{Binding IsLoading}"
+                    IsRunning="{Binding IsLoading}"
+                    Color="{DynamicResource ButtonPrimaryColor}" />
+                <!--Image-->
+                <StackLayout>
+                    <Frame
+                        Padding="4"
+                        BackgroundColor="{DynamicResource HeadingColor}">
+                        <Label
+                            Text="ITEM IMAGE:*"
+                            FontSize="Subtitle"
+                            LineBreakMode="NoWrap"
+                            Margin="16, 0"
+                            HorizontalTextAlignment="Start"
+                            TextColor="{DynamicResource HeadingFontColor}"/>
+                    </Frame>
+
+                    <Frame
+                          Margin="15"
+                          Padding="0"
+                          HorizontalOptions="CenterAndExpand"
+                          CornerRadius="5"
+                          BackgroundColor="LightGray"
+                          IsClippedToBounds="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CameraButtonCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid
+                            HeightRequest="250"
+                            WidthRequest="250">
+                            <ffimage:CachedImage
+                                Scale="0.5"
+                                HeightRequest="250"
+                                WidthRequest="250"
+                                Source="{DynamicResource WhiteCameraSource}"
+                                IsEnabled="False">
+                            </ffimage:CachedImage>
+                            <imgcrop:ImageCropView
+                                HeightRequest="250"
+                                WidthRequest="250"
+                                Source="{Binding ReportImage}"
+                                IsEnabled="False"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+                
+               <!--Item Name-->
+                <StackLayout>
+                    <Frame
+                        Padding="4"
+                        BackgroundColor="{DynamicResource HeadingColor}">
+                        <Label
+                            Text="ITEM NAME:*"
+                            FontSize="Subtitle"
+                            LineBreakMode="NoWrap"
+                            Margin="16, 0"
+                            HorizontalTextAlignment="Start"
+                            TextColor="{DynamicResource HeadingFontColor}"/>
+                    </Frame>
+                    <Frame
+                        BackgroundColor="Transparent"
+                        Margin="16,0"
+                        Padding="0">
+                        <Entry
+                            Text="{Binding ReportTitle}"
+                            Placeholder="ie. Twinings Mint Tea"
+                            PlaceholderColor="{DynamicResource HeadingFontColor}"
+                            MaxLength="50"/>
+                    </Frame>
+                </StackLayout>
+
+                <!--Barcode-->
+                <StackLayout>
+                    <Frame
+                        Padding="4"
+                        BackgroundColor="{DynamicResource HeadingColor}">
+                        <Label
+                            Text="BARCODE"
+                            FontSize="Subtitle"
+                            LineBreakMode="NoWrap"
+                            Margin="16, 0"
+                            HorizontalTextAlignment="Start"
+                            TextColor="{DynamicResource HeadingFontColor}"/>
+                    </Frame>
+                    
+                <!-- Barcode button -->
+                <Frame
+                        BackgroundColor="Transparent"
+                        Margin="0"
+                        Padding="16,8"
+                        MinimumWidthRequest="10000"
+                        WidthRequest="10000"
+                        HasShadow="False">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding ScanBarcodeButtonCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <StackLayout Orientation="Horizontal">
+                        <!--Text and expand icon-->
+                        <Label
+                            Text="{Binding BarcodeLabel}"
+                            FontFamily="{DynamicResource p1}"
+                            FontSize="{DynamicResource FontSize1}"
+                            Grid.Column="1"
+                            VerticalOptions="Center"
+                            HorizontalTextAlignment="Start"/>
+                        <ffimage:CachedImage
+                            Source="{DynamicResource ExpandIconSource}"
+                            HorizontalOptions="EndAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            HeightRequest="20"
+                            WidthRequest="20"/>
+                    </StackLayout>
+                </Frame>
+                </StackLayout>          
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

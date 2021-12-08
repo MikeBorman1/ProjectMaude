@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
+             xmlns:staticColor="clr-namespace:CPMA_Core_APP.Common;assembly=CPMA-Core-APP.Common"
+             x:Class="CPMA_Core_APP.App">
+	<Application.Resources>
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{x:Static staticColor:Colors.GRGreen}"/>
+            <Setter Property="BarTextColor" Value="White"/>
+        </Style>
+        <!-- Global Static Application resource dictionary -->
+
+	</Application.Resources>
+</prism:PrismApplication>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:CustomTabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            xmlns:controls="clr-namespace:CPMA_Core_APP.Controls"
+            xmlns:staticColor="clr-namespace:CPMA_Core_APP.Common;assembly=CPMA-Core-APP.Common"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            android:TabbedPage.UnselectedTabColor="White"
+            android:TabbedPage.SelectedTabColor="{x:Static staticColor:Colors.ITBWhite}"
+            xmlns:views="clr-namespace:CPMA_Core_APP.Views"
+            prism:ViewModelLocator.AutowireViewModel="True"
+            x:Class="CPMA_Core_APP.Views.TabbedHomePage"
+            NavigationPage.HasBackButton="False"
+            Title="{Binding Title}"
+            BackgroundColor="{x:Static staticColor:Colors.GRGreen}">
+    <controls:CustomTabbedPage.Children>
+        <views:MainPage Title="Home" BindingContext="{Binding MainPageViewModel}" />
+        <views:ReportsPage Title="Reports" BindingContext="{Binding ReportsPageViewModel}"/>
+        <views:RecycleInfoPage Title="Recycle Info" BindingContext="{Binding RecycleInfoPageViewModel}"/>
+        <views:CollectionInfoPage Title="Collection Info" BindingContext="{Binding CollectionInfoPageViewModel}"/>
+    </controls:CustomTabbedPage.Children>
+</controls:CustomTabbedPage>
